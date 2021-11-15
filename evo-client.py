@@ -27,6 +27,8 @@ def service_check(pip):
         "ticket_message": "Message: \u043d\u0438\u0447\u0435\u0433\u043e \u043d\u0435 \u043f\u043e\u043d\u044f\u0442\u043d\u043e",
         "offline_message": "Your name: \u0421\u0435\u0433\u0435\u0439\nE-mail: sergey2001ru@yandex.ru\nSubject: \u043f\u043e \u043f\u043e\u0432\u043e\u0434\u0443 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438\nMessage: \u043d\u0438\u0447\u0435\u0433\u043e \u043d\u0435 \u043f\u043e\u043d\u044f\u0442\u043d\u043e",\
         "visitor_id": "b0787003-6e0d-4775-6c54-3b7a7f9e0d30",\
+#        "visitor_id": "4be27c3c-34dc-409a-b6c3-8c3cbf574bde",\
+
         "requester": {\
         "name": "\u0421\u0435\u0433\u0435\u0439",\
         "mail": "sergey2001ru@yandex.ru"\
@@ -49,11 +51,14 @@ def service_check(pip):
     print (json1)
 
     import requests
-    proxies={'https://':pip}
+    proxies={'https':'http://'+pip}
+    print(proxies)
+    
     r = requests.post('https://api.livechatinc.com/v2/tickets/new',json=json1,proxies=proxies)
+#    r = requests.post('https://icanhazip.com',json=json1,proxies=proxies)
     print (r.text)
     print (r.status_code)
-#    time.sleep(10)
+#    time.sleep(13)
 
 
 
