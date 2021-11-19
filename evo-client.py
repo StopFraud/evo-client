@@ -54,10 +54,16 @@ def service_check(pip):
     proxies={'https':'http://'+pip}
     print(proxies)
     
-    r = requests.post('https://api.livechatinc.com/v2/tickets/new',json=json1,proxies=proxies)
+    r = requests.post('https://api.livechatinc.com/v2/tickets/new',json=json1,proxies=proxies, timeout=15)
 #    r = requests.post('https://icanhazip.com',json=json1,proxies=proxies)
     print (r.text)
     print (r.status_code)
+    print ('--------------------')
+    d={'data[locale]':'ru','data[name]':'??????','data[surname]':'?????????','data[country]':'ru','data[phone]':'+79456584122','data[email]':'galka7771@yandex.ru','data[currency]':'USD','data[landing][is_default_site]':'1','data[confirmed]':'1'}
+    r1 = requests.post('https://evotrade-fx2.com/api/registration_json',data=d,proxies=proxies, timeout=15)
+    print (r1.text)
+    print (r1.status_code)
+
 #    time.sleep(13)
 
 
