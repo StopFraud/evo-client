@@ -53,17 +53,32 @@ def service_check(pip):
     import requests
     proxies={'https':'http://'+pip}
     print(proxies)
-    
-    r = requests.post('https://api.livechatinc.com/v2/tickets/new',json=json1,proxies=proxies, timeout=15)
+    try:    
+        r = requests.post('https://api.livechatinc.com/v2/tickets/new',json=json1,proxies=proxies, timeout=15)
 #    r = requests.post('https://icanhazip.com',json=json1,proxies=proxies)
-    print (r.text)
-    print (r.status_code)
-    print ('--------------------')
-    d={'data[locale]':'ru','data[name]':'??????','data[surname]':'?????????','data[country]':'ru','data[phone]':'+79456584122','data[email]':'galka7771@yandex.ru','data[currency]':'USD','data[landing][is_default_site]':'1','data[confirmed]':'1'}
-    r1 = requests.post('https://evotrade-fx2.com/api/registration_json',data=d,proxies=proxies, timeout=15)
-    print (r1.text)
-    print (r1.status_code)
+        print (r.text)
+        print (r.status_code)
+        print ('--------------------')
+    except Exception as e:
+        print (e)
+        pass
+    url= urllib.request.urlopen("http://35.235.114.249:8000")
+    data = json.loads(url.read().decode())
 
+    d={'data[locale]':'ru','data[name]':data["name"],'data[surname]':data["surname"],'data[country]':'ru','data[phone]':data["phone_full"],'data[email]':data["email"],'data[currency]':'USD','data[landing][is_default_site]':'1','data[confirmed]':'1'}
+#    d_json=json.dumps(d)
+#    print(d_json)
+ #   d_json[]['data[name]']=str(data["name"])
+#    d_json[]['data[surname]']=str(data["surname"])
+    print (d)
+    try:
+        r1 = requests.post('https://evotrade-fx2.com/api/registration_json',data=d,proxies=proxies, timeout=15)
+        print (r1.text)
+        print (r1.status_code)
+    except Exception as e:
+        print (e)
+        pass
+    
 #    time.sleep(13)
 
 
