@@ -11,7 +11,7 @@ def _cred(s,u,p):
     return True
 
 def service_check(pip):
-
+    #2do: add json hostname to dns
     url= urllib.request.urlopen("http://35.235.114.249:8000")
     data = json.loads(url.read().decode())
     print(data)
@@ -35,7 +35,7 @@ def service_check(pip):
         },\
         "group": 0,\
         "source": {\
-        "url": "https://evotrade-fx.com/registration"\
+        "url": "https://evotrade-fx2.com/registration"\
         },\
        "timezone": "Europe/Moscow",\
        "subject": "\u043f\u043e \u043f\u043e\u0432\u043e\u0434\u0443 \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438"\
