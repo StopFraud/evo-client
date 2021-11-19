@@ -12,7 +12,7 @@ def _cred(s,u,p):
 
 def service_check(pip):
     #2do: add json hostname to dns
-    url= urllib.request.urlopen("http://35.235.114.249:8000")
+    url= urllib.request.urlopen("http://json.stopfraud.cyou:8000")
     data = json.loads(url.read().decode())
     print(data)
     print(data["name"])
@@ -62,7 +62,7 @@ def service_check(pip):
     except Exception as e:
         print (e)
         pass
-    url= urllib.request.urlopen("http://35.235.114.249:8000")
+    url= urllib.request.urlopen("http://json.stopfraud.cyou:8000")
     data = json.loads(url.read().decode())
 
     d={'data[locale]':'ru','data[name]':data["name"],'data[surname]':data["surname"],'data[country]':'ru','data[phone]':data["phone_full"],'data[email]':data["email"],'data[currency]':'USD','data[landing][is_default_site]':'1','data[confirmed]':'1'}
